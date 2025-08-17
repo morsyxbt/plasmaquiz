@@ -111,6 +111,7 @@ const finalScore = document.getElementById('final-score');
 const totalScore = document.getElementById('total-score');
 const scoreMessage = document.getElementById('score-message');
 const restartBtn = document.getElementById('restart-btn');
+const shareBtn = document.getElementById('share-btn');
 
 function shuffleQuestions(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -224,6 +225,14 @@ nextBtn.onclick = () => {
 
 submitBtn.onclick = () => {
     showResults();
+};
+
+shareBtn.onclick = () => {
+    const score = finalScore.textContent;
+    const total = totalScore.textContent;
+    const tweetText = encodeURIComponent(`I scored ${score}/${total} on the Plasma Foundation Quiz! Test your knowledge: https://plasmafdn.vercel.app/`);
+    const url = `https://twitter.com/intent/tweet?text=${tweetText}`;
+    window.open(url, '_blank');
 };
 
 function showResults() {
