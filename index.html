@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plasma Foundation Quiz - Test Your Knowledge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen font-inter bg-gradient-to-br from-slate-50 via-white to-blue-50">
+<!-- Start Modal -->
+<div id="start-modal" class="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+  <div class="bg-[#10382B] rounded-2xl shadow-xl p-10 max-w-sm w-full text-center border border-[#1C7C54]">
+    <img src="logo.jpg" alt="Plasma Foundation Logo" class="mx-auto mb-6 w-16 h-16 rounded-full shadow-lg">
+    <h2 class="text-2xl font-space-grotesk font-bold text-[#E8F5E9] mb-4">Welcome to the Plasma Foundation Quiz</h2>
+    <p class="text-[#A3B18A] mb-8">Test your knowledge and see how much you know about Plasma!</p>
+    <button id="start-quiz-btn" class="px-8 py-3 mt-2 font-bold rounded-xl bg-gradient-to-r from-[#1C7C54] to-[#E8F5E9] text-[#10382B] border border-[#E8F5E9] shadow-lg transition-transform hover:scale-105 focus:outline-none">Start Quiz</button>
+  </div>
+</div>
+
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 opacity-5 pointer-events-none">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm border-b border-slate-200/50">
+        <div class="max-w-4xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 flex items-center justify-center group">
+                        <img src="logo.jpg" alt="Plasma Foundation Logo" class="w-10 h-10 object-contain transition-transform duration-200 group-hover:scale-110 group-hover:ring-2 group-hover:ring-blue-400 focus:scale-110 focus:ring-2 focus:ring-blue-400">
+                    </div>
+                    <a href="https://x.com/Plasma Foundation" target="_blank" id="plasmafdn-link" class="text-xl font-space-grotesk font-bold text-slate-800 focus:outline-none transition-transform transition-colors duration-200 hover:scale-110 hover:text-blue-600 focus:scale-110 focus:text-blue-600">Plasma Foundation</a>
+                </div>
+                <div class="text-sm font-medium highlight-white">Knowledge Quiz</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-1 py-8">
+        <div class="max-w-3xl mx-auto px-4">
+            <!-- Quiz Container -->
+            <div id="quiz-container" class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden">
+                <!-- Progress Bar -->
+                <div class="bg-slate-50/50 px-6 py-4 border-b border-slate-200/50">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium highlight-white">Progress</span>
+                        <span class="text-sm font-medium text-slate-600">
+                            <span id="current-question" class="highlight-white">1</span> <span class="highlight-white">/</span> <span id="total-questions" class="highlight-white">10</span>
+                        </span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-2">
+                        <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-500 ease-out" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <!-- Timer -->
+                <div class="px-6 py-4 bg-gradient-to-r from-slate-50 to-blue-50/30 border-b border-slate-200/50">
+                    <div class="flex items-center justify-center space-x-3">
+                        <div class="w-3 h-3 timer-dot rounded-full animate-pulse"></div>
+                        <span class="text-lg font-semibold highlight-white">
+                            Time: <span id="timer-display">15</span>s
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Question Content -->
+                <div id="question-content" class="p-8">
+                    <div class="text-center mb-8">
+                        <h2 id="question-text" class="text-2xl font-space-grotesk font-semibold text-slate-800 leading-relaxed mb-4">
+                            Loading question...
+                        </h2>
+                    </div>
+
+                    <div id="answer-options" class="space-y-4">
+                        <!-- Options will be dynamically generated -->
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex justify-center mt-8">
+                        <button id="next-btn" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            Next Question
+                        </button>
+                        <button id="submit-btn" class="hidden px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            See Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="results-content">
+            <div class="mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🎉</span>
+                </div>
+                <h3 class="text-2xl font-space-grotesk font-bold text-slate-800 mb-2">Quiz Completed!</h3>
+                <p class="highlight-white">Here's how you performed:</p>
+            </div>
+
+            <div class="bg-gradient-to-r from-slate-50 to-blue-50/30 rounded-xl p-6 mb-6">
+                <div class="text-4xl font-bold mb-2 highlight-white">
+                    <span id="final-score">0</span>/<span id="total-score">10</span>
+                </div>
+                <div class="text-lg highlight-white" id="score-message">Great job!</div>
+            </div>
+
+            <div class="space-y-3">
+                <button id="share-btn" class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                    Share on X (Twitter)
+                </button>
+                <button id="restart-btn" class="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                    Take Quiz Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="click-sound" preload="auto"></audio>
+    <audio id="correct-sound" preload="auto"></audio>
+    <audio id="wrong-sound" preload="auto"></audio>
+    <audio id="timeout-sound" preload="auto"></audio>
+
+    <script src="quiz.js"></script>
+<a href="https://x.com/bigray0x" target="_blank" id="profileTwitter" class="floating-twitter">
+  <svg width="22" height="22" viewBox="0 0 32 32" fill="none" style="margin-right:7px;vertical-align:middle;"><path fill="currentColor" d="M32 6.076a13.14 13.14 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.633 13.193 13.193 0 0 1-4.17 1.594A6.56 6.56 0 0 0 22.16 4c-3.627 0-6.563 2.936-6.563 6.564 0 .514.058 1.016.17 1.495C10.318 11.86 5.485 9.383 2.228 5.652a6.532 6.532 0 0 0-.888 3.303c0 2.277 1.159 4.287 2.92 5.465a6.52 6.52 0 0 1-2.977-.822v.083c0 3.181 2.262 5.834 5.265 6.437a6.573 6.573 0 0 1-2.971.112c.837 2.613 3.264 4.514 6.14 4.564a13.176 13.176 0 0 1-8.15 2.808c-.53 0-1.052-.03-1.57-.092a18.61 18.61 0 0 0 10.064 2.948c12.077 0 18.697-10.007 18.697-18.695 0-.285-.007-.568-.02-.85A13.282 13.282 0 0 0 32 6.076z"/></svg>
+  @bigray0x
+</a>
+</body>
+</html>

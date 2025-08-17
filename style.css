@@ -1,0 +1,373 @@
+/* Custom Font Classes */
+.font-inter {
+    font-family: 'Inter', sans-serif;
+    color: #E8F5E9 !important;
+}
+
+.font-space-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #E8F5E9 !important;
+}
+
+/* Background Grid Pattern */
+.bg-grid-pattern {
+    background-image: 
+        linear-gradient(rgba(16, 56, 43, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 56, 43, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Global Styles */
+body {
+  background: linear-gradient(135deg, #0B1F17 0%, #10382B 100%) !important;
+  color: #E8F5E9 !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Twitter Profile Hover Effect */
+#profileTwitter svg {
+  color: #111;
+  z-index: 2;
+}
+.floating-twitter {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 18px 7px 11px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 10px 0 rgba(16,56,43,0.13);
+  color: #111;
+  z-index: 100;
+  text-decoration: none;
+  transition: box-shadow 0.18s, background 0.18s;
+}
+.floating-twitter:hover {
+  box-shadow: 0 4px 18px 0 rgba(16,56,43,0.18);
+  background: #f8fafc;
+}
+.floating-twitter svg {
+  color: #111;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+
+/* Highlighted White Text */
+.highlight-white {
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(232,245,233,0.18);
+}
+
+/* Option Button Styles */
+.selected-answer {
+  background: #b6f2d7 !important;
+  color: #10382B !important;
+  border: 2px solid #1C7C54 !important;
+  box-shadow: 0 0 0 2px #b6f2d7cc;
+  transition: background 0.2s, border 0.2s;
+}
+.correct-answer {
+  background: #1C7C54 !important;
+  color: #E8F5E9 !important;
+  border: 2px solid #1C7C54 !important;
+  box-shadow: 0 0 0 2px #1C7C5480;
+  transition: background 0.2s, border 0.2s;
+}
+.wrong-answer {
+  background: #ffbdbd !important;
+  color: #7a1c1c !important;
+  border: 2px solid #e57373 !important;
+  box-shadow: 0 0 0 2px #ffbdbdcc;
+  transition: background 0.2s, border 0.2s;
+}
+
+/* Start Modal Premium Overlay */
+#start-modal {
+  background: rgba(11,31,23,0.94) !important;
+}
+#start-modal .rounded-2xl {
+  box-shadow: 0 8px 32px 0 rgba(28,124,84,0.18), 0 2px 8px 0 rgba(232,245,233,0.22);
+}
+
+button, .option-btn, #next-btn, #submit-btn, #share-btn, #restart-btn {
+  background: linear-gradient(90deg, #1C7C54 0%, #E8F5E9 100%);
+  color: #10382B;
+  border: 1.5px solid #E8F5E9;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 18px 0 rgba(232,245,233,0.12), 0 1.5px 4px 0 rgba(16,56,43,0.18);
+  font-weight: 700;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 6px rgba(232,245,233,0.10);
+  transition: transform 0.15s, background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .option-btn:hover, #next-btn:hover, #submit-btn:hover, #share-btn:hover, #restart-btn:hover {
+  background: linear-gradient(90deg, #E8F5E9 0%, #1C7C54 100%);
+  color: #1C7C54;
+  border: 1.5px solid #E8F5E9;
+  box-shadow: 0 8px 32px 0 rgba(232,245,233,0.18), 0 2px 8px 0 rgba(16,56,43,0.22);
+  transform: scale(1.07);
+}
+
+button:disabled, .option-btn:disabled {
+  background: #2E473B;
+  color: #A3B18A;
+  opacity: 0.7;
+  cursor: not-allowed;
+  border: 1.5px solid #1C7C54;
+}
+button:hover, .option-btn:hover, #next-btn:hover, #submit-btn:hover, #share-btn:hover, #restart-btn:hover {
+  background: linear-gradient(90deg, #E8F5E9 0%, #1C7C54 100%);
+  color: #1C7C54;
+  border: 1.5px solid #E8F5E9;
+  box-shadow: 0 8px 32px 0 rgba(232,245,233,0.18), 0 2px 8px 0 rgba(16,56,43,0.22);
+  transform: scale(1.07);
+}
+button:disabled, .option-btn:disabled {
+  background: #2E473B !important;
+  color: #A3B18A !important;
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  border: 1.5px solid #1C7C54 !important;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+  min-width: 28px;
+  justify-content: center;
+}
+.option-btn span:first-child {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.option-btn::before {
+    /* Disabled sheen effect to avoid shiny highlight on hover */
+    content: none !important;
+}
+
+/* Remove hover slide effect */
+.option-btn:hover::before { left: auto !important; }
+
+.option-btn.selected {
+    animation: pulse-glow 1s infinite;
+}
+
+.option-btn.correct {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    border-color: #059669 !important;
+}
+
+.option-btn.wrong {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    color: white !important;
+    border-color: #dc2626 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+.option-btn.disabled {
+    background: #2E473B !important;
+    color: #A3B18A !important;
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+}
+
+/* Timer Animation */
+.timer-warning {
+    animation: pulse-glow 0.5s infinite;
+    color: #ef4444 !important;
+}
+
+.timer-critical {
+    animation: shake 0.2s infinite;
+    color: #dc2626 !important;
+}
+
+/* Results Modal Animation */
+.results-show {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+/* Progress Bar Animation */
+#progress-bar {
+  background: #1C7C54 !important;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .option-btn {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    #question-text {
+        font-size: 1.5rem;
+    }
+    
+    .px-8 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0B1F17, #10382B);
+}
+
+/* Focus States for Accessibility */
+header {
+  background: #0B1F17 !important;
+  color: #E8F5E9 !important;
+  border-bottom: 2px solid #10382B !important;
+  box-shadow: 0 2px 12px 0 rgba(16,56,43,0.18) !important;
+}
+
+.bg-white, .bg-white\/90, .bg-slate-50\/50, .bg-gradient-to-r, .bg-gradient-to-br, #quiz-container, .rounded-2xl, .shadow-xl, #results-modal, #results-content {
+  background: #0B1F17 !important;
+  color: #E8F5E9 !important;
+  border: 1.5px solid #10382B !important;
+  box-shadow: 0 6px 24px 0 rgba(16,56,43,0.15);
+}
+
+button:hover, .option-btn:hover, #next-btn:hover, img[alt="PlasmaFDN Logo"] {
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+img[alt="PlasmaFDN Logo"]:hover {
+  transform: scale(1.15);
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+button:hover, .option-btn:hover, #next-btn:hover {
+  background: linear-gradient(90deg, #0B1F17 0%, #10382B 100%) !important;
+  color: #E8F5E9 !important;
+  transform: scale(1.04) !important;
+  box-shadow: 0 4px 16px 0 rgba(16,56,43,0.18) !important;
+}
+
+/* Timer Dot White Override */
+.bg-orange-400, .w-3.h-3.rounded-full {
+  background-color: #E8F5E9 !important;
+  box-shadow: 0 0 8px 0 #E8F5E980;
+}
+
+/* Premium Question Header */
+h2#question-text, h3#question-text, #question-text {
+  color: #E8F5E9 !important;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 12px rgba(232,245,233,0.13);
+  margin-bottom: 0.6em;
+  position: relative;
+  background: none !important;
+}
+
+#timer-display {
+  color: #E8F5E9 !important;
+  font-weight: 800;
+  font-size: 1.35rem;
+  text-shadow: 0 2px 8px rgba(232,245,233,0.22);
+  letter-spacing: 0.05em;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  padding: 0.15em 0.6em;
+  border-radius: 0.5em;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.timer-blink {
+  animation: timer-blink-gentle 1.2s ease-in-out infinite;
+}
+@keyframes timer-blink-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.timer-critical {
+  color: #ff4848 !important;
+  animation: timer-blink-anim 0.5s steps(2, start) infinite;
+}
+@keyframes timer-blink-anim {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
